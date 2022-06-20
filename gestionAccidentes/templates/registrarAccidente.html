@@ -1,14 +1,16 @@
+{% load crispy_forms_tags %}
 <html>
 
 <head>
     <link rel="stylesheet" href="/static/css/registrarAccidente.css">
     <link rel="stylesheet" href="/static/css/styleView.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'inicio' %}">
                 <img src="/media/logo/icons8-accident-85.png" alt="" width="40" height="34" class="d-inline-block align-text-top"> Gestor de accidentes
@@ -35,34 +37,32 @@
         </div>
     </nav>
 
-    <div class="col-md-8 p-5">
-        <div class="content p-5 box shadow bg-black">
-            <div id="mapa" class="capas">
+    <div class="p-4">
+        <div class="content col-12 p-2 px-0 box shadow bg-white">
+            <span class="align">
+            <div id="mapa" class="capas col-6 mx-2 mt-5"></div>
 
-            </div>
-            <div id="datos" class="capas">
-                <input type="text" id="place_input">
+            
+        </span>
+            <div id="datos" class="d-inline-block col-4 mx-3 ">
+                <input type="text" class="col-8" id="place_input">
                 <p>Ej: Cojutepeque Cuscatlan</p>
                 <div id="form">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <table>
-                            {{form.as_table}}
+                    <form action="" method="POST" class="form-control" enctype="multipart/form-data">
+                        {% csrf_token %} {{form|crispy}}
 
-                        </table>
-                        <table>
-                            <strong>Opcional:</strong> {{form2.as_table}}
-                        </table>
-                        <input type="submit" value="Guardar">
                     </form>
-                    <p>Mueva el marcador rojo para obtener las coordenadas del lugar deseado</p>
+                    <strong>Opcional:</strong>
+                    <form class="form-control">
+                        {{form2|crispy}}
+
+                        <input type="submit" class="btn btn-primary col-12 mt-2" value="Guardar">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="data"></div>
-    <a href="{% url 'inicio' %} "><button>Regresar</button></a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/static/js/mapa.js "></script>
