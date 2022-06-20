@@ -39,11 +39,7 @@
 
     <div class="p-4">
         <div class="content col-12 p-2 px-0 box shadow bg-white">
-            <span class="align">
             <div id="mapa" class="capas col-6 mx-2 mt-5"></div>
-
-            
-        </span>
             <div id="datos" class="d-inline-block col-4 mx-3 ">
                 <input type="text" class="col-8" id="place_input">
                 <p>Ej: Cojutepeque Cuscatlan</p>
@@ -51,10 +47,8 @@
                     <form action="" method="POST" class="form-control" enctype="multipart/form-data">
                         {% csrf_token %} {{form|crispy}}
 
-                    </form>
-                    <strong>Opcional:</strong>
-                    <form class="form-control">
-                        {{form2|crispy}}
+
+                        <strong>Opcional:</strong> {{form2|crispy}}
 
                         <input type="submit" class="btn btn-primary col-12 mt-2" value="Guardar">
                     </form>
