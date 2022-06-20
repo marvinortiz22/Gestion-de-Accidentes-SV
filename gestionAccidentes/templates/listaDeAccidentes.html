@@ -37,7 +37,7 @@
                 </div>
             </div>
         </nav>
-        <div class="mt-2 px-2 form-floaing col ">
+        <div class="mt-2 px-2 form-floaing col">
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-row">
@@ -47,14 +47,15 @@
                     </div>
                 </div>
                 <div class="row mt-3 ">
-                    <div class="col text-center"><input type="submit" class="col-9 btn btn-success" value="Filtrar"></div>
+                    <div class="col text-center"><input type="submit" class="col-9 btn btn-success mb-3" value="Filtrar"></div>
                 </div>
-                <p class="col text-center mt-2">
-                    <strong>Advertencia:</strong> Si detecta algun accidente fraudulento, por favor reportelo (solo se le contara un reporte por accidente)
-                </p>
+
             </form>
             <div class="col text-center"><a href="{% url 'listaDeAccidentes' %} "><button class="btn col-9 btn-secondary">Mostrar todos</button></a></div>
         </div>
+        <p class="col text-center mt-2">
+            <strong>Advertencia:</strong> Si detecta algun accidente fraudulento, por favor reportelo (solo se le contara un reporte por accidente)
+        </p>
         <div class="shadow box shadow" style="height:100vh">
             <table class="table text-center table-striped table-bordered">
                 <thead class="thead-dark">
