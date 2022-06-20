@@ -29,5 +29,6 @@ urlpatterns = [
     path('accounts/login/',views.IniciarSesion, name="IniciarSesion"),
     path('Registrarse/',views.Registrarse, name="Registrarse"),
     path('cerrarSesion/',views.cerrarSesion, name="cerrarSesion"),
+   
 ]
 urlpatterns +=static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT)

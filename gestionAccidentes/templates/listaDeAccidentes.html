@@ -43,7 +43,7 @@
                 <div class="form-row">
                     <div class="input-group">
                         {{filtro.filtrar_por|as_crispy_field}}
-                        <div class="mx-5">{{filtro.filtro|as_crispy_field}}</div>
+                        <div class="mx-5">{{filtro.buscar|as_crispy_field}}</div>
                     </div>
                 </div>
                 <div class="row mt-3 ">
@@ -60,7 +60,7 @@
             <table class="table text-center table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
+                        
                         <th scope="col">Departamento</th>
                         <th scope="col">Municipio</th>
                         <th scope="col">Lugar</th>
@@ -71,7 +71,7 @@
                 <tbody>
                     {% for accidente in accidentes %}
                     <tr>
-                        <th scope="row">{{accidente.id}}</th>
+                        
                         <td>{{accidente.departamento}}</td>
                         <td>{{accidente.municipio}}</td>
                         <td>{{accidente.lugar}}</td>

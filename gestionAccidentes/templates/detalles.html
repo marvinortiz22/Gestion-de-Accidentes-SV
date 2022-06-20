@@ -45,10 +45,15 @@
                 <fieldset disabled style="border: none">
 
 
-                    <form action="" method="POST" class="form-control" enctype="multipart/form-data">
+                    <form action="" method="POST" class="form-control" enctype="multipart/form-data" id="form">
                         {% csrf_token %}
                         <table class="mb-2">
+                            <table>
                             {{form|crispy}}
+                            <tr><label>Municipio*</label></tr>  
+                            <tr><td><input value="{{accidente.municipio}}"></td></tr>
+                        </table>
+                            
                             <tr>
                                 {{form2.cantVictimas|as_crispy_field}}
                             </tr>

@@ -5,3 +5,7 @@
     height: 500px;
     vertical-align: top;
 }
+
+select{
+    width: 192px;
+}

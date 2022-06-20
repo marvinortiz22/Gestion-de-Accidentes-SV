@@ -27,9 +27,6 @@ def Registrarse(request):
             usuario=form.save()
             login(request, usuario)
             return redirect('inicio')
-        else:
-            for mensaje in form.error_messages:
-                messages.error(request, form.error_messages[mensaje])
     else:        
         form=RegistroForm()
     return render(request, "Registrarse.html",{"form":form})
@@ -41,16 +38,17 @@ def inicio(request):
 
 @login_required
 def listaDeAccidentes(request):
-    form=FiltroForm(request.POST or None)
+    form=FiltroForm(request.POST)
     if request.method=="POST" and form.is_valid():
         if form.cleaned_data['filtrar_por']=="Departamento":
-            accidentes=ReporteAccidente.objects.filter(departamento=form.cleaned_data['filtro']).order_by('-fecha')          
+            accidentes=ReporteAccidente.objects.filter(departamento__iexact=form.cleaned_data['buscar']).order_by('-fecha')          
             form=FiltroForm()
         else:
-            accidentes=ReporteAccidente.objects.filter(municipio=form.cleaned_data['filtro']).order_by('-fecha')          
+            accidentes=ReporteAccidente.objects.filter(municipio__iexact=form.cleaned_data['buscar']).order_by('-fecha')          
             form=FiltroForm()
     else:
         accidentes=ReporteAccidente.objects.all().order_by('-fecha')
+        form=FiltroForm()
     return render(request,"listaDeAccidentes.html",{"accidentes":accidentes,  "filtro":form})
 
 @login_required
@@ -62,6 +60,7 @@ def registrarAccidente(request):
         form2=DatosExtraForm(request.POST, request.FILES)
         if form.is_valid():
             accidente=form.save(commit=False)
+            accidente.municipio=request.POST.get('municipio')
             accidente.user=request.user
             accidente.save()
             datosExtra=form2.save(commit=False)
@@ -83,7 +82,7 @@ def Detalles(request, id):
         form2=DatosExtraForm(instance=detalles)
     else:
         form2=DatosExtraForm()
-    return render(request, "detalles.html",{"form":form, "form2":form2, "detalles":detalles})
+    return render(request, "detalles.html",{"form":form, "form2":form2, "detalles":detalles,"accidente":accidente})
 
 @login_required
 def reportar(request, id):

@@ -1,0 +1,6 @@
+#id_username::-webkit-outer-spin-button,
+#id_username::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    width: 85px;
+}

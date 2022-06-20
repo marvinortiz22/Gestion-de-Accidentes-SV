@@ -18,7 +18,7 @@ Departamentos=(
 
 Filtros=(
     ('',''),
-    ('Por departamento','Por departamento'),
-    ('Por municipio','Por municipio')
+    ('Departamento','Departamento'),
+    ('Municipio','Municipio')
 )
 
